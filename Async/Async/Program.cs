@@ -1,6 +1,8 @@
 ﻿using Async2.Data;
+using Async2.Models;
 using Async2.Models.Interfaces;
 using Async2.Models.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -13,8 +15,13 @@ builder.Services.AddDbContext<AsyncDBContext>(options => options.UseSqlServer(co
 
 builder.Services.AddControllers();
 
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+}).AddEntityFrameworkStores<AsyncDBContext>();
 
 
+builder.Services.AddTransient<IUser, IdentityUserService>();
 builder.Services.AddTransient<IHotel, HotelService>();
 builder.Services.AddTransient<IRoom, RoomService>();
 builder.Services.AddTransient<IAmenity, AmenityService>();

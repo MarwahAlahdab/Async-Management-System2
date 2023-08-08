@@ -1,10 +1,11 @@
 ﻿using System;
 using Async2.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Async2.Data
 {
-    public class AsyncDBContext : DbContext
+    public class AsyncDBContext : IdentityDbContext <ApplicationUser>
     {
 
 
@@ -22,6 +23,8 @@ namespace Async2.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Room>().HasData(
                 new Room { ID = 1, Name = "Room 1", Layout = RoomLayout.Studio },

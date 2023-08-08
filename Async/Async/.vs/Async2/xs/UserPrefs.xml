@@ -1,34 +1,29 @@
 ﻿<Properties StartupConfiguration="{80B6B580-59EC-4CB4-9A8A-9E8A51B5475C}|http">
-  <MonoDevelop.Ide.ItemProperties.AsyncTests FirstBuild="True" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../AsyncTests/UnitTest1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/HotelRoomController.cs">
     <Files>
-      <File FileName="Controllers/HotelController.cs" />
-      <File FileName="../AsyncTests/UnitTest1.cs" Line="35" Column="22" />
+      <File FileName="Controllers/HotelController.cs" Line="110" Column="6" />
+      <File FileName="Controllers/HotelRoomController.cs" Line="90" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Async2" expanded="True">
             <Node name="Async2" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Data" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="DTO" expanded="True" />
-                <Node name="Interfaces" expanded="True" />
-                <Node name="Services" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="HotelRoomController.cs" selected="True" />
               </Node>
-            </Node>
-            <Node name="AsyncTests" expanded="True">
-              <Node name="UnitTest1.cs" selected="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.AsyncTests FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
