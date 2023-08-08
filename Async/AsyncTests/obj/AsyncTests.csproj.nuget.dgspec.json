@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/marwaalahdab/Desktop/Async/AsyncTests/AsyncTests.csproj": {}
+    "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/AsyncTests/AsyncTests.csproj": {}
   },
   "projects": {
-    "/Users/marwaalahdab/Desktop/Async/Async/Async2.csproj": {
+    "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/Async/Async2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/marwaalahdab/Desktop/Async/Async/Async2.csproj",
+        "projectUniqueName": "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/Async/Async2.csproj",
         "projectName": "Async2",
-        "projectPath": "/Users/marwaalahdab/Desktop/Async/Async/Async2.csproj",
+        "projectPath": "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/Async/Async2.csproj",
         "packagesPath": "/Users/marwaalahdab/.nuget/packages/",
-        "outputPath": "/Users/marwaalahdab/Desktop/Async/Async/obj/",
+        "outputPath": "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/Async/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/marwaalahdab/.nuget/NuGet/NuGet.Config"
@@ -40,6 +40,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.9, )"
@@ -90,14 +94,14 @@
         }
       }
     },
-    "/Users/marwaalahdab/Desktop/Async/AsyncTests/AsyncTests.csproj": {
+    "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/AsyncTests/AsyncTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/marwaalahdab/Desktop/Async/AsyncTests/AsyncTests.csproj",
+        "projectUniqueName": "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/AsyncTests/AsyncTests.csproj",
         "projectName": "AsyncTests",
-        "projectPath": "/Users/marwaalahdab/Desktop/Async/AsyncTests/AsyncTests.csproj",
+        "projectPath": "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/AsyncTests/AsyncTests.csproj",
         "packagesPath": "/Users/marwaalahdab/.nuget/packages/",
-        "outputPath": "/Users/marwaalahdab/Desktop/Async/AsyncTests/obj/",
+        "outputPath": "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/AsyncTests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/marwaalahdab/.nuget/NuGet/NuGet.Config"
@@ -113,8 +117,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/marwaalahdab/Desktop/Async/Async/Async2.csproj": {
-                "projectPath": "/Users/marwaalahdab/Desktop/Async/Async/Async2.csproj"
+              "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/Async/Async2.csproj": {
+                "projectPath": "/Users/marwaalahdab/Desktop/Async-Management-System2/Async/Async/Async2.csproj"
               }
             }
           }

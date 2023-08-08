@@ -139,3 +139,24 @@ PUT
 
 DELETE
 /api/Room/{id}
+
+
+
+#### Lab 18
+
+ASP.NET Identity is a framework that provides built-in user authentication and identity management functionality for ASP.NET applications.
+
+
+
+I Integrates the Identity Framework into my Hotel API
+
+Confirm that you can register a user successfully in the database:
+
+![ERD](./register.png)
+
+
+
+Confirm that you can login with the credentials of an existing user: 
+
+![ERD](./login.png)
+
