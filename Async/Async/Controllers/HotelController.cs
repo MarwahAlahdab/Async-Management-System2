@@ -10,6 +10,7 @@ using Async2.Models;
 using Async2.Models.Interfaces;
 using Async2.Models.Services;
 using Async2.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Async2.Controllers
 {
@@ -29,6 +30,7 @@ namespace Async2.Controllers
 
 
         // GET: api/Hotel
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HotelDTO>>> GetHotels()
         {
@@ -44,6 +46,7 @@ namespace Async2.Controllers
 
 
         // GET: api/Hotel/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<HotelDTO>> GetHotel(int id)
         {
@@ -61,9 +64,9 @@ namespace Async2.Controllers
 
 
 
-            // PUT: api/HotelControllers/5
-            // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-            [HttpPut("{id}")]
+        // PUT: api/HotelControllers/5
+        [Authorize(Policy = "update")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateHotel(int hotelId, Hotel hotel)
         {
             if (hotelId != hotel.Id || !ModelState.IsValid)
@@ -82,6 +85,7 @@ namespace Async2.Controllers
 
         // POST: api/HotelControllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Policy = "create")]
         [HttpPost]
         public async Task<ActionResult<HotelDTO>> AddHotel(HotelDTO hotelDTO)
         {
@@ -91,9 +95,10 @@ namespace Async2.Controllers
             var addedHotel = await _hotel.AddHotel(hotelDTO);
             return CreatedAtAction(nameof(GetHotel), new { hotelId = addedHotel.Id }, addedHotel);
         }
-    
+
 
         // DELETE: api/HotelControllers/5
+        [Authorize(Policy = "delete")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteHotel(int hotelId)
         {

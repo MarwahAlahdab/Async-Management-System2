@@ -847,3 +847,4 @@
 /Users/marwaalahdab/Desktop/Async-Management-System2/Async/Async/bin/Debug/net7.0/Microsoft.Extensions.Identity.Core.dll
 /Users/marwaalahdab/Desktop/Async-Management-System2/Async/Async/bin/Debug/net7.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/marwaalahdab/Desktop/Async-Management-System2/Async/Async/bin/Debug/net7.0/Microsoft.Extensions.Options.dll
+/Users/marwaalahdab/Desktop/Async-Management-System2/Async/Async/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

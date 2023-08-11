@@ -1,31 +1,32 @@
-﻿<Properties StartupConfiguration="{80B6B580-59EC-4CB4-9A8A-9E8A51B5475C}|http">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/HotelRoomController.cs">
+﻿<Properties StartupConfiguration="{BBC35352-BF6F-4B8A-B11B-8D754A5DD19F}|http">
+  <MonoDevelop.Ide.ItemProperties.AsyncTests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Controllers/HotelController.cs" Line="110" Column="6" />
-      <File FileName="Controllers/HotelRoomController.cs" Line="90" Column="1" />
+      <File FileName="Controllers/HotelController.cs" />
+      <File FileName="Controllers/HotelRoomController.cs" />
+      <File FileName="Data/AsyncDBContext.cs" />
+      <File FileName="Program.cs" Line="73" Column="1" />
+      <File FileName="Models/Services/JwtTokenService.cs" Line="23" Column="1" />
+      <File FileName="Models/Services/IdentityUserService.cs" Line="75" Column="25" />
+      <File FileName="Models/DTO/UserDto.cs" Line="11" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Async2" expanded="True">
-            <Node name="Async2" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="HotelRoomController.cs" selected="True" />
-              </Node>
-              <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True" />
+          <Node name="Async2">
+            <Node name="Async2">
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.AsyncTests FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Async2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Async2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

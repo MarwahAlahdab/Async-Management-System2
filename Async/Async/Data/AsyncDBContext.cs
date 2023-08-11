@@ -1,5 +1,6 @@
 ﻿using System;
 using Async2.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -64,6 +65,35 @@ namespace Async2.Data
 
 
 
+
+        
+
+            SeedRole(modelBuilder, "District Manager",
+                "hotel.create", "hotel.read", "hotel.update", "hotel.delete",
+                "hotelroom.create", "hotelroom.read", "hotelroom.update", "hotelroom.delete",
+                "room.create", "room.read", "room.update", "room.delete",
+                "amenity.create", "amenity.read", "amenity.update", "amenity.delete",
+                "role.create");
+
+
+            SeedRole(modelBuilder, "Property Manager",
+                "hotelroom.create", "hotelroom.read", "hotelroom.update", "hotelroom.delete",
+                "amenity.create", "amenity.read", "amenity.update", "amenity.delete",
+                "role.create.agent");
+
+
+            SeedRole(modelBuilder, "Agent",
+                "hotelroom.read", "hotelroom.update",
+                "amenity.create", "amenity.delete");
+
+
+            SeedRole(modelBuilder, "Anonymous",
+                "hotel.read", "hotelroom.read", "room.read", "amenity.read");
+
+
+
+
+
             modelBuilder.Entity<HotelRoom>().HasKey(hr => new { hr.RoomId, hr.HotelId });
             modelBuilder.Entity<RoomAmenity>().HasKey(
       RoomAmenity => new {
@@ -88,7 +118,77 @@ namespace Async2.Data
             );
 
 
+
+
+
+
+
+            // Seed default District Manager user
+            var hasher = new PasswordHasher<ApplicationUser>();
+            var districtManagerUser = new ApplicationUser
+            {
+                UserName = "manager1",
+                NormalizedUserName = "MANAGER1", 
+                Email = "d_manager1@example.com"
+            };
+
+            districtManagerUser.PasswordHash = hasher.HashPassword(districtManagerUser, "DManager#123");
+            districtManagerUser.SecurityStamp = Guid.NewGuid().ToString(); 
+            modelBuilder.Entity<ApplicationUser>().HasData(districtManagerUser);
+
+            var districtManagerUserRole = new IdentityUserRole<string>
+            {
+                RoleId = "District Manager", // Role ID of District Manager role
+                UserId = districtManagerUser.Id
+            };
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(districtManagerUserRole);
+
+
+      
+
+
+
+
         }
+
+
+
+
+
+
+
+
+
+        int nextId = 1;
+        private void SeedRole(ModelBuilder modelBuilder, string roleName, params string[] permissions)
+        {
+            var role = new IdentityRole
+            {
+                Id = roleName.ToLower(),
+                Name = roleName,
+                NormalizedName = roleName.ToUpper(),
+                ConcurrencyStamp = Guid.Empty.ToString()
+            };
+
+            modelBuilder.Entity<IdentityRole>().HasData(role);
+
+            // Go through the permissions list (the params) and seed a new entry for each
+            var roleClaims = permissions.Select(permission =>
+              new IdentityRoleClaim<string>
+              {
+                  Id = nextId++,
+                  RoleId = role.Id,
+                  ClaimType = "permissions", // This matches what we did in Program.cs
+                  ClaimValue = permission
+              }).ToArray();
+
+            modelBuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
+        }
+
+
+
+
+
 
 
     }

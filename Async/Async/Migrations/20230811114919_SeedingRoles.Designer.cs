@@ -4,6 +4,7 @@ using Async2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Async2.Migrations
 {
     [DbContext(typeof(AsyncDBContext))]
-    partial class AsyncDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230811114919_SeedingRoles")]
+    partial class SeedingRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,23 +122,6 @@ namespace Async2.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "d94674e6-1384-4422-bd37-891674065dd7",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "e5fd59d5-b110-4ac5-b1e8-631a6417c358",
-                            Email = "d_manager1@example.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedUserName = "MANAGER1",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOg9hnWxhGkg7o4L+4HEptyz4LcN9Mqf/Kp9rDzw5rUjqjdPv4UI4/zKAUAZyJhdBg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "517cefd1-4e71-48eb-87e3-9f7c415b81b2",
-                            TwoFactorEnabled = false,
-                            UserName = "manager1"
-                        });
                 });
 
             modelBuilder.Entity("Async2.Models.Hotel", b =>
@@ -706,13 +692,6 @@ namespace Async2.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "d94674e6-1384-4422-bd37-891674065dd7",
-                            RoleId = "District Manager"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

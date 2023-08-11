@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Security.Claims;
 using Async2.Models.DTO;
 using Async2.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Async2.Models.Services
@@ -9,11 +11,14 @@ namespace Async2.Models.Services
     public class IdentityUserService : IUser
     {
 
+        private JwtTokenService tokenService;
+
         private UserManager<ApplicationUser> userManager;
 
-        public IdentityUserService(UserManager<ApplicationUser> manager)
+        public IdentityUserService(UserManager<ApplicationUser> manager, JwtTokenService tokenService)
         {
             userManager = manager;
+            this.tokenService = tokenService;
         }
 
        
@@ -31,10 +36,14 @@ namespace Async2.Models.Services
 
             if (result.Succeeded)
             {
+                await userManager.AddToRolesAsync(user, registerUser.Roles);
+
                 return new UserDto()
                 {
                     Id = user.Id,
-                    Username = user.UserName
+                    Username = user.UserName,
+                    Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(5)),
+                    Roles = await userManager.GetRolesAsync(user),
                 };
             }
 
@@ -64,7 +73,8 @@ namespace Async2.Models.Services
                 return new UserDto
                 {
                     Id = user.Id,
-                    Username = user.UserName
+                    Username = user.UserName,
+                    Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(5))
                 };
             }
 
@@ -73,6 +83,44 @@ namespace Async2.Models.Services
         }
 
 
+
+        public async Task<UserDto> GetUser(ClaimsPrincipal principal)
+        {
+            var user = await userManager.GetUserAsync(principal);
+
+            return new UserDto
+            {
+                Id = user.Id,
+                Username = user.UserName,
+                Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(5))
+            };
+
+
+
+        }
+
+       
+
+
+
+
+
+        //public async Task<UserDto> GetDefaultDistrictManagerUserAsync(string email)
+        //{
+        //    var user = await userManager.FindByEmailAsync(email);
+
+        //    if (user != null && await userManager.IsInRoleAsync(user, "District Manager"))
+        //    {
+        //        return new UserDto
+        //        {
+        //            Id = user.Id,
+        //            Username = user.UserName,
+        //            Token = await tokenService.GetToken(user, TimeSpan.FromMinutes(5))
+        //        };
+        //    }
+
+        //    return null;
+        //}
 
 
 

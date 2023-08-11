@@ -10,6 +10,7 @@ using Async2.Models;
 using Async2.Models.Interfaces;
 using Async2.Models.DTO;
 using Async2.Models.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Async2.Controllers
 {
@@ -27,6 +28,7 @@ namespace Async2.Controllers
 
 
         // GET: api/Room
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<List<RoomDTO>>> GetAllRooms()
         {
@@ -43,6 +45,7 @@ namespace Async2.Controllers
         }
 
         // GET: api/Room/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<RoomDTO>> GetRoom(int Id)
         {
@@ -58,6 +61,7 @@ namespace Async2.Controllers
 
         // PUT: api/Room/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Policy = "update")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateRoom(int roomId, Room room)
         {
@@ -77,6 +81,7 @@ namespace Async2.Controllers
 
         // POST: api/Room
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Policy = "create")]
         [HttpPost]
         public async Task<ActionResult<RoomDTO>> AddRoom(RoomDTO roomDTO)
         {
@@ -98,6 +103,7 @@ namespace Async2.Controllers
 
 
         // DELETE: api/Room/5
+        [Authorize(Policy = "delete")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoom(int roomId)
         {
