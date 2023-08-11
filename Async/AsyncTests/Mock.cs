@@ -1,5 +1,6 @@
 ﻿using Async2.Data;
 using Async2.Models;
+using Async2.Models.Services;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ public abstract class Mock : IDisposable
 {
     private readonly SqliteConnection _connection;
     protected readonly AsyncDBContext _db;
+
 
     public Mock()
     {
@@ -83,6 +85,10 @@ public abstract class Mock : IDisposable
 
         return hotelRoom;
     }
+
+
+
+
 
 
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Async2.Models.DTO;
 using Async2.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -49,5 +50,49 @@ namespace Async2.Controllers
         }
 
 
+        [AllowAnonymous]
+        [HttpGet("Profile")]
+        public async Task <ActionResult<UserDto>> Profile()
+        {
+
+            return await userService.GetUser(this.User);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //[HttpGet("district-manager")]
+        //[Authorize(Roles = "District Manager")] // Authorize the route for District Managers only
+        //public async Task<IActionResult> GetDefaultDistrictManagerUser(string email)
+        //{
+            
+        //        var userDto = await userService.GetDefaultDistrictManagerUserAsync(email);
+
+        //        if (userDto != null)
+        //        {
+        //            return Ok(userDto);
+        //        }
+        //        else
+        //        {
+        //            return NotFound("Default District Manager user not found.");
+        //        }
+           
+        //}
+
+
+
+
+
+
     }
-    }
+}

@@ -9,6 +9,7 @@ using Async2.Data;
 using Async2.Models;
 using Async2.Models.DTO;
 using Async2.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Async2.Controllers
 {
@@ -30,7 +31,7 @@ namespace Async2.Controllers
 
 
         // GET: api/Amenity
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<List<AmenityDTO>>> GetAllAmenities()
         {
@@ -47,7 +48,7 @@ namespace Async2.Controllers
         }
 
         // GET: api/Amenity/5
-
+        [AllowAnonymous]
         [HttpGet("{amenityId}")]
         public async Task<ActionResult<AmenityDTO>> GetAmenity(int amenityId)
         {
@@ -66,7 +67,10 @@ namespace Async2.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+
         //POST
+        [Authorize(Policy = "create")]
         [HttpPost]
         public async Task<ActionResult<AmenityDTO>> AddAmenity(AmenityDTO amenityDTO)
         {
@@ -86,7 +90,7 @@ namespace Async2.Controllers
         }
 
         // PUT: api/Amenity/5
-
+        [Authorize(Policy = "update")]
         [HttpPut("{amenityId}")]
         public async Task<ActionResult<Amenity>> UpdateAmenity(int amenityId, Amenity amenity)
         {
@@ -105,7 +109,7 @@ namespace Async2.Controllers
 
 
         // DELETE: api/Amenity/5
-
+        [Authorize(Policy = "delete")]
         [HttpDelete("{amenityId}")]
         public async Task<ActionResult> DeleteAmenity(int amenityId)
         {
@@ -121,7 +125,6 @@ namespace Async2.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -130,4 +133,3 @@ namespace Async2.Controllers
 
 
 
-//

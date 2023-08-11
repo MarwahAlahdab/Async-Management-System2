@@ -9,6 +9,7 @@ using Async2.Data;
 using Async2.Models;
 using Async2.Models.Interfaces;
 using Async2.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Async2.Controllers
 {
@@ -28,6 +29,7 @@ namespace Async2.Controllers
 
 
         // GET all the rooms for a hotel: api/HotelRoom?hotelId=1
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HotelRoomDTO>>> GetHotelRooms(int hotelId)
         {
@@ -39,6 +41,7 @@ namespace Async2.Controllers
 
 
         // POST to add a room to a hotel: /api/Hotels/{hotelId}/Rooms
+        [Authorize(Policy = "create")]
         [HttpPost]
         public async Task<ActionResult<HotelRoomDTO>> AddHotelRoom(int hotelId, HotelRoomDTO hotelRoomDTO)
         {
@@ -55,6 +58,7 @@ namespace Async2.Controllers
 
 
         // GET all room details for a specific room: api/HotelRoom/0?roomId=1&hotelId=1
+        [AllowAnonymous]
         [HttpGet("{roomNumber}")]
         public async Task<ActionResult<HotelRoomDTO>> GetHotelRoom(int roomId, int hotelId)
         {
@@ -75,6 +79,7 @@ namespace Async2.Controllers
 
 
         // PUT update the details of a specific room: /api/Hotels/{hotelId}/Rooms/{roomNumber}
+        [Authorize(Policy = "update")]
         [HttpPut("{roomNumber}")]
         public async Task<IActionResult> UpdateHotelRoom(int hotelId, int roomId, HotelRoom hotelRoom)
         {
@@ -92,6 +97,7 @@ namespace Async2.Controllers
 
 
         // DELETE a specific room from a hotel: /api/Hotels/{hotelId}/Rooms/{roomNumber}
+        [Authorize(Policy = "delete")]
         [HttpDelete("{roomNumber}")]
         public async Task<IActionResult> DeleteHotelRoom(int hotelId, int roomId)
         {

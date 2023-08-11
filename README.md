@@ -160,3 +160,22 @@ Confirm that you can login with the credentials of an existing user:
 
 ![ERD](./login.png)
 
+#### Lab 19
+
+
+I Add 3 new roles to the application with the following permissions:
+
+District Manager
+District manager can do full CRUD operations on all Hotel, HotelRoom, Room, and Amenity entities.
+The district manager can create accounts for all other roles
+Property Manager
+Property Manager’s can add/update/read new HotelRooms to hotels, and amenities to rooms. A property manager cannot create new room entities or hotel entities.
+The property manager can only create accounts for Agents
+Agent
+An agent can only update/read a HotelRoom and add/delete amenities to rooms
+Anonymous users
+anonymous users can only view all GET routes
+
+
+Added Profile route
+![ERD](./Screen%20Shot%202023-08-11%20at%205.45.30%20PM.png)
