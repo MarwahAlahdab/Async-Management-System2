@@ -13,6 +13,9 @@ namespace Async2.Models.Services
         private IConfiguration configuration;
         private SignInManager<ApplicationUser> signInManager;
 
+
+        //Initializes the JwtTokenService with IConfiguration and SignInManager.
+
         public JwtTokenService(IConfiguration config, SignInManager<ApplicationUser> manager)
         {
             configuration = config;
@@ -21,6 +24,8 @@ namespace Async2.Models.Services
 
 
 
+        // GetValidationPerameters: Returns TokenValidationParameters for JWT token validation.
+        // It sets the validation options, such as whether to validate the issuer and audience.
 
         public static TokenValidationParameters GetValidationPerameters(IConfiguration configuration)
         {
@@ -32,6 +37,11 @@ namespace Async2.Models.Services
                 ValidateAudience = false
             };
         }
+
+
+
+        // Retrieves the secret key from the configuration and converts it to a SecurityKey.
+        // It's used for signing and verifying JWT tokens.
 
         private static SecurityKey GetSecurityKey(IConfiguration configuration)
         {
@@ -48,7 +58,9 @@ namespace Async2.Models.Services
 
 
 
-        //Generate token to user with an expire date
+        //Generate token to a given user with an expire date
+        /* It creates a new JwtSecurityToken and sets its properties, including expiration time, 
+         signing credentials, claims based on the user's information.*/
 
         public async Task<string> GetToken(ApplicationUser user, TimeSpan expiresIn)
         {
@@ -58,6 +70,7 @@ namespace Async2.Models.Services
             {
                 return null;
             }
+
             var signingKey = GetSecurityKey(configuration);
 
             var token = new JwtSecurityToken(
@@ -77,3 +90,13 @@ namespace Async2.Models.Services
     }
 }
 
+/*
+ 
+ signInManager: This is an instance of SignInManager<ApplicationUser>,
+ which is a part of ASP.NET Identity framework.
+ It provides methods to manage user authentication operations,
+ including creating claims principals.
+ 
+  A claims principal represents the identity of the user, and it contains various claims about the user,
+  such as their username, roles, and other relevant information.
+ */
